@@ -1,18 +1,19 @@
 package com.example.JPAbasicapril;
 
-import jakarta.persistence.Entity;
-import jakarta.persistence.Id;
-import jakarta.persistence.Table;
+import jakarta.persistence.*;
 
 @Entity
 @Table(name="user_info")
 public class User {
 
     @Id
+    @GeneratedValue(strategy = GenerationType.IDENTITY)
     private int userId;
     private String name;
     private int age;
     private String mobile;
+    @OneToOne(mappedBy = "user")
+    Card card;
 
     public User() {
     }
